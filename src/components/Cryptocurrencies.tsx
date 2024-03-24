@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import TrackedCryptos, { TrackedCryptosProps } from './TrackedCryptos';
-import SearchCrypto from './SearchCrypto';
-import { filterCryptosByName } from '../lib/filterCryptosByName';
 import { CRYPTOCURRENCIES, localStorageCryptoListKey } from '../constants';
 import PriceHistoryChart from './PriceHistoryChart';
 import { ComboBoxProps, Combobox } from '@/components/ui/combobox';
@@ -9,9 +7,7 @@ import useCryptos from '@/hooks/useCryptos';
 import useAllCryptoList from '@/hooks/useAllCryptoList';
 
 const Cryptocurrencies = () => {
-  const [searchInput, setSearchInput] = useState<string>('');
-
-  //Get tracked cryptos from localStorage. If not, start with 5 by default
+  // get tracked cryptos from localStorage. If not, start with 5 by default
   const [trackedCryptos, setTrackedCrypto] = useState<string[]>(() => {
     const arrString = localStorage.getItem(localStorageCryptoListKey) ?? 'null';
 
@@ -77,14 +73,9 @@ const Cryptocurrencies = () => {
       <TrackedCryptos
         isLoading={isLoading}
         isError={isError}
-        trackedCryptosList={filterCryptosByName(searchInput, data)}
+        trackedCryptosList={data}
         removeCryptoById={handleRemoveCryptoById}
-      >
-        <SearchCrypto
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-        />
-      </TrackedCryptos>
+      />
 
       <PriceHistoryChart />
     </div>

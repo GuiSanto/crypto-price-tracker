@@ -12,7 +12,7 @@ const fetchPriceHistory = async (coinId: string = 'bitcoin', days: number = 7) =
     }
     const data = await response.json();
     const { prices } = data;
-    return prices;
+    return { prices };
 }
 
 export default fetchPriceHistory;

@@ -6,7 +6,7 @@ import fetchPriceHistory from '../api/fetchPriceHistory';
 // Fetch data a cryptocurrency using react-query
 const usePriceHistory = (cryptoName?: string, days?: number) => {
     return useQuery<PriceHistory, ErrorMessage>({
-        queryKey: ['crypto', cryptoName],
+        queryKey: ['priceHistory', cryptoName],
         queryFn: () => fetchPriceHistory(cryptoName, days),
     });
 };

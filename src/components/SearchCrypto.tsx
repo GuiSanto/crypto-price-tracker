@@ -9,10 +9,10 @@ const SearchCrypto = ({ searchInput, setSearchInput }: SearchCryptoProps) => {
   };
 
   return (
-    <div className="flex flex-col w-full my-4">
+    <div className="flex flex-col w-1/3 my-8">
       <input
         type="text"
-        className="rounded-md h-10 p-4 w-1/3"
+        className="rounded-md h-10 p-4 bg-gray-700"
         placeholder="Filter by name or symbol..."
         value={searchInput}
         onChange={handleChange}

@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import { Crypto } from '../types/Crypto';
 import { Spinner } from '@material-tailwind/react';
+import SearchCrypto from './SearchCrypto';
+import { filterCryptosByName } from '@/lib/filterCryptosByName';
 
 export type TrackedCryptosProps = {
   isLoading: boolean;
   isError: boolean;
   trackedCryptosList?: Crypto[];
   removeCryptoById: (cryptoId: string) => void;
-  children: React.ReactNode;
 };
 
 const TrackedCryptos = ({
@@ -14,8 +16,12 @@ const TrackedCryptos = ({
   isError,
   trackedCryptosList,
   removeCryptoById,
-  children,
 }: TrackedCryptosProps) => {
+  const [searchInput, setSearchInput] = useState<string>('');
+
+  // filtering cryptos shown according to user input
+  const data = filterCryptosByName(searchInput, trackedCryptosList);
+
   const handleRemove = (cryptoId: string) => {
     removeCryptoById(cryptoId);
   };
@@ -23,12 +29,7 @@ const TrackedCryptos = ({
   if (isLoading) {
     return (
       <div className="flex justify-center">
-        <Spinner
-          color="indigo"
-          className="h-20 w-20"
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        />
+        <Spinner color="indigo" className="h-20 w-20" />
       </div>
     );
   }
@@ -47,10 +48,10 @@ const TrackedCryptos = ({
         Tracked Cryptocurrencies
       </h1>
 
-      {children}
+      <SearchCrypto searchInput={searchInput} setSearchInput={setSearchInput} />
 
-      {trackedCryptosList &&
-        trackedCryptosList.map((crypto) => (
+      {data &&
+        data.map((crypto) => (
           <div
             key={crypto.id}
             className="flex justify-between items-center w-full my-4 p-4 bg-indigo-600 rounded-xl"
@@ -63,7 +64,7 @@ const TrackedCryptos = ({
               <h2 className="w-1/2">${crypto.current_price}</h2>
               <button
                 type="button"
-                className="border-red-900 border-4 mx-6 w-1/2"
+                className="border-purple-900 border-4 mx-6 w-24"
                 onClick={() => handleRemove(crypto.id)}
               >
                 Remove

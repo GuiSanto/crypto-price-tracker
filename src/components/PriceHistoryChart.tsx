@@ -25,8 +25,13 @@ ChartJS.register(
   Legend,
 );
 
-const PriceHistoryChart = () => {
-  const { data: priceHistory } = usePriceHistory('bitcoin', 30);
+type PriceHistoryChartProps = {
+  cryptoId?: string;
+  days?: number;
+};
+
+const PriceHistoryChart = ({ cryptoId, days }: PriceHistoryChartProps) => {
+  const { data: priceHistory } = usePriceHistory(cryptoId, days);
 
   if (!priceHistory) {
     return <h2>Error getting price chart</h2>;

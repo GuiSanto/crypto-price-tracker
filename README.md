@@ -23,6 +23,7 @@ Crypto Price Tracker is a simple web application built with TypeScript and React
 - Material Tailwind
 - Shadcn
 - Tanstack React Query
+- react-chartjs-2
 
 ## Setup Instructions
 

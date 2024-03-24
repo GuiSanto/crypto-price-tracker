@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Crypto } from '../types/Crypto';
 import TrackedCryptos, { TrackedCryptosProps } from './TrackedCryptos';
 import SearchCrypto from './SearchCrypto';
-import { filterCryptosByName } from '../utils/filterCryptosByName';
+import { filterCryptosByName } from '../lib/filterCryptosByName';
 import { CRYPTOCURRENCIES, localStorageCryptoListKey } from '../constants';
 import PriceHistoryChart from './PriceHistoryChart';
 import { useQuery } from '@tanstack/react-query';
@@ -106,7 +106,7 @@ const Cryptocurrencies = () => {
           ) : (
             // Display only the cryptocurrency matching the search input
             <TrackedCryptos
-              trackedCryptosList={filterCryptosByName(data, searchInput)}
+              trackedCryptosList={filterCryptosByName(searchInput, data)}
               removeCryptoById={handleRemoveCryptoById}
             />
           )}

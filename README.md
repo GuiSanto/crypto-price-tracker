@@ -19,6 +19,8 @@ Crypto Price Tracker is a simple web application built with TypeScript and React
 - Vite.js
 - TailwindCSS
 - Shadcn
+- Material Tailwind
+- Tanstack React Query
 
 ## Setup Instructions
 
@@ -28,10 +30,10 @@ Make sure you have Node.js and npm installed on your machine.
 
 ### CoinGecko API Setup
 
-You also need to create a Developer account in CoinGecko API.
+You also need to create a Demo API account in CoinGecko API.
 
 1. **Create an account:**
-   Visit the [CoinGecko API registration page](https://support.coingecko.com/hc/en-us/articles/21880397454233-User-Guide-How-to-sign-up-for-CoinGecko-Demo-API-and-generate-an-API-key) and follow the instructions to sign up for a developer account.
+   Visit the [CoinGecko API registration page](https://support.coingecko.com/hc/en-us/articles/21880397454233-User-Guide-How-to-sign-up-for-CoinGecko-Demo-API-and-generate-an-API-key) and follow the instructions to sign up for a Demo API account.
 
 2. **Obtain an API key:**
    After creating an account, follow the steps outlined in the guide to generate your API key from the CoinGecko dashboard.

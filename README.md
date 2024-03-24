@@ -26,9 +26,18 @@ Crypto Price Tracker is a simple web application built with TypeScript and React
 
 Make sure you have Node.js and npm installed on your machine.
 
+### CoinGecko API Setup
+
 You also need to create a Developer account in CoinGecko API.
 
-After creating an account, you need to get an API key and use it in the .env file.
+1. **Create an account:**
+   Visit the [CoinGecko API registration page](https://support.coingecko.com/hc/en-us/articles/21880397454233-User-Guide-How-to-sign-up-for-CoinGecko-Demo-API-and-generate-an-API-key) and follow the instructions to sign up for a developer account.
+
+2. **Obtain an API key:**
+   After creating an account, follow the steps outlined in the guide to generate your API key from the CoinGecko dashboard.
+
+3. **Use the API key in the .env file:**
+   Create a `.env` file in the root directory of your project if it doesn't already exist. Add your CoinGecko API key to the `.env` file.
 
 ### Installation
 

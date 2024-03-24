@@ -1,7 +1,6 @@
 import { COINGECKO } from "../constants";
-import { Crypto } from "../types/Crypto";
 
-const fetchCryptoList = async () => {
+const fetchAllCryptoList = async () => {
     const response = await fetch(COINGECKO.LIST_URL(), {
         method: 'GET',
         headers: {
@@ -11,8 +10,8 @@ const fetchCryptoList = async () => {
     if (!response.ok) {
         throw new Error('Network response was not ok');
     }
-    const data: Crypto[] = await response.json();
+    const data = await response.json();
     return data;
 }
 
-export default fetchCryptoList;
+export default fetchAllCryptoList;

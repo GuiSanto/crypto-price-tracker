@@ -8,8 +8,8 @@ Crypto Price Tracker is a simple web application built with TypeScript and React
 
 ## Features
 
-- Select and deselect cryptocurrencies
-- Real-time price tracking
+- Select and deselect cryptocurrencies to track
+- Real-time price tracking (updates every 60 seconds)
 - Simple and intuitive user interface
 
 ## Technologies Used

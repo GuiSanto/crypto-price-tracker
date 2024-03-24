@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+# Crypto Price Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Crypto Price Tracker is a simple web application built with TypeScript and React.js that allows users to track cryptocurrency prices. Users can select and deselect cryptocurrencies to monitor their prices in real-time.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Crypto Price Tracker Screenshot](./screenshots/screenshot.png)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Select and deselect cryptocurrencies
+- Real-time price tracking
+- Simple and intuitive user interface
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- TypeScript
+- React.js
+- Vite.js
+- TailwindCSS
+- Shadcn
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Setup Instructions
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed on your machine.
+
+### Installation
+
+1. **Navigate to the project directory:**
+
+   ```bash
+   cd crypto-price-tracker
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.**
+
+5. **Select the cryptocurrencies you want to track and monitor their prices in real-time.**
+
+### Screenshots
+
+![Crypto Price Tracker Screenshot](./public/AppScreenshot1.png)

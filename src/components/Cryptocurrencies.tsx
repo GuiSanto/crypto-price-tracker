@@ -27,7 +27,7 @@ const Cryptocurrencies = () => {
     return CRYPTOCURRENCIES;
   });
 
-  // fetch the data from the tracked cryptos, to get their objects
+  // get all the tracked cryptos from the API
   const { data, isLoading, isError, refetch } = useQuery<
     Crypto[],
     ErrorMessage
@@ -89,27 +89,21 @@ const Cryptocurrencies = () => {
         itemSelected={addCryptoToTrack}
       ></Combobox>
 
-      <SearchCrypto searchInput={searchInput} setSearchInput={setSearchInput} />
-
       {isError ? (
         <h2>Error fetching data</h2>
       ) : isLoading ? (
         <h2>Loading...</h2>
       ) : (
         <>
-          {searchInput === '' ? (
-            // Display entire trackedCryptosList if searchInput is empty
-            <TrackedCryptos
-              trackedCryptosList={data}
-              removeCryptoById={handleRemoveCryptoById}
+          <TrackedCryptos
+            trackedCryptosList={filterCryptosByName(searchInput, data)}
+            removeCryptoById={handleRemoveCryptoById}
+          >
+            <SearchCrypto
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
             />
-          ) : (
-            // Display only the cryptocurrency matching the search input
-            <TrackedCryptos
-              trackedCryptosList={filterCryptosByName(searchInput, data)}
-              removeCryptoById={handleRemoveCryptoById}
-            />
-          )}
+          </TrackedCryptos>
         </>
       )}
 

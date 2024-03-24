@@ -25,7 +25,7 @@ const Cryptocurrencies = () => {
   });
 
   // get the tracked cryptos from the API
-  const { data, isError, refetch } = useCryptos(trackedCryptos);
+  const { data, isLoading, isError, refetch } = useCryptos(trackedCryptos);
 
   // fetch the list of all supported coins by CoinGecko
   // NOTE: The CoinGecko API can only fetch ALL cryptos, it doesn't have an endpoint with the option to filter them in the request,
@@ -75,6 +75,7 @@ const Cryptocurrencies = () => {
       </div>
 
       <TrackedCryptos
+        isLoading={isLoading}
         isError={isError}
         trackedCryptosList={filterCryptosByName(searchInput, data)}
         removeCryptoById={handleRemoveCryptoById}

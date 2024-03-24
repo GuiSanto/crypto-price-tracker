@@ -1,5 +1,10 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -74,4 +79,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+})

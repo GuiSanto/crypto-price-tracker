@@ -60,14 +60,14 @@ const Cryptocurrencies = () => {
   return (
     <div className="flex flex-col mt-20 px-40">
       <div className="flex items-center gap-4">
-        <h2>Add Crypto</h2>
+        <label className="text-lg font-bold">Add Crypto</label>
         <Combobox
           items={
             cryptoList?.map(({ id, name }) => ({ label: name, value: id })) ??
             []
           }
           itemSelected={addCryptoToTrack}
-        ></Combobox>
+        />
       </div>
 
       <TrackedCryptos

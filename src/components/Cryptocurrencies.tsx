@@ -4,7 +4,7 @@ import { CRYPTOCURRENCIES, localStorageCryptoListKey } from '../constants';
 import PriceHistoryChart from './PriceHistoryChart';
 import { ComboBoxProps, Combobox } from '@/components/ui/combobox';
 import useCryptos from '@/hooks/useCryptos';
-import useAllCryptoList from '@/hooks/useAllCryptoList';
+import useAllCryptosList from '@/hooks/useAllCryptosList';
 
 const Cryptocurrencies = () => {
   // get tracked cryptos from localStorage. If not, start with 5 by default
@@ -26,7 +26,7 @@ const Cryptocurrencies = () => {
   // fetch the list of all supported coins by CoinGecko
   // NOTE: The CoinGecko API can only fetch ALL cryptos, it doesn't have an endpoint with the option to filter them in the request,
   // so the only way is to get them all
-  const { data: cryptoList } = useAllCryptoList();
+  const { data: cryptoList } = useAllCryptosList();
 
   const handleRemoveCryptoById: TrackedCryptosProps['removeCryptoById'] = (
     cryptoId,
@@ -77,7 +77,7 @@ const Cryptocurrencies = () => {
         removeCryptoById={handleRemoveCryptoById}
       />
 
-      <PriceHistoryChart />
+      <PriceHistoryChart trackedCryptos={data} />
     </div>
   );
 };

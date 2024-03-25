@@ -7,3 +7,22 @@ export const COINGECKO = {
 };
 
 export const CRYPTOCURRENCIES = ["bitcoin", "ethereum", "solana", "cardano", "dogecoin"];
+
+export const TIMEFRAMES = [
+    {
+        label: "24 Hours",
+        value: 1
+    },
+    {
+        label: "7 Days",
+        value: 7
+    },
+    {
+        label: "1 Month",
+        value: 30
+    },
+    {
+        label: "1 Year",
+        value: 365
+    },
+]

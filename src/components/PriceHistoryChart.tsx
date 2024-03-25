@@ -1,3 +1,4 @@
+import { TIMEFRAMES } from '@/constants';
 import usePriceHistory from '../hooks/usePriceHistory';
 import { ChartData } from '@/types/CryptoChartData';
 import {
@@ -12,7 +13,11 @@ import {
   Legend,
 } from 'chart.js';
 import moment from 'moment';
+import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
+import { Combobox } from './ui/combobox';
+import { Crypto } from '@/types/Crypto';
+import { Spinner } from '@material-tailwind/react';
 
 ChartJS.register(
   CategoryScale,
@@ -26,19 +31,38 @@ ChartJS.register(
 );
 
 type PriceHistoryChartProps = {
-  cryptoId?: string;
-  days?: number;
+  trackedCryptos?: Crypto[];
 };
 
-const PriceHistoryChart = ({ cryptoId, days }: PriceHistoryChartProps) => {
-  const { data: priceHistory } = usePriceHistory(cryptoId, days);
+const PriceHistoryChart = ({ trackedCryptos }: PriceHistoryChartProps) => {
+  const [timePeriod, setTimePeriod] = useState<number | undefined>(7);
+  const [selectedCrypto, setSelectedCrypto] = useState<string>('bitcoin');
+
+  const {
+    data: priceHistory,
+    refetch,
+    isLoading,
+  } = usePriceHistory(selectedCrypto, timePeriod);
+
+  useEffect(() => {
+    refetch();
+  }, [timePeriod, selectedCrypto]);
+
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex justify-center">
+  //       <Spinner color="indigo" className="h-20 w-20" />
+  //     </div>
+  //   );
+  // }
 
   if (!priceHistory) {
     return <h2>Error getting price chart</h2>;
   }
 
   // get the x,y values
-  const cryptoChartData: ChartData = priceHistory?.prices.map((value) => ({
+  let cryptoChartData: ChartData = [];
+  cryptoChartData = priceHistory?.prices.map((value) => ({
     x: value[0],
     y: value[1].toFixed(2),
   }));
@@ -52,7 +76,7 @@ const PriceHistoryChart = ({ cryptoId, days }: PriceHistoryChartProps) => {
     datasets: [
       {
         fill: true,
-        label: 'Bitcoin',
+        label: selectedCrypto,
         data: cryptoChartData.map((value) => value.y),
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -66,17 +90,36 @@ const PriceHistoryChart = ({ cryptoId, days }: PriceHistoryChartProps) => {
         Price History Chart
       </h1>
 
-      <div className="flex justify-center items-center mt-4 gap-4">
-        <button type="button">24 Hours</button>
-        <button type="button">7 Days</button>
-        <button type="button">1 Week</button>
-        <button type="button">1 Month</button>
-        <button type="button">1 Year</button>
+      <div className="flex justify-center items-center my-4 gap-4">
+        {TIMEFRAMES.map(({ label, value }) => (
+          <button
+            key={value}
+            type="button"
+            onClick={() => setTimePeriod(value)}
+          >
+            {label}
+          </button>
+        ))}
+        <Combobox
+          items={
+            trackedCryptos?.map(({ id, name }) => ({
+              label: name,
+              value: id,
+            })) ?? []
+          }
+          itemSelected={(cryptoId) => setSelectedCrypto(cryptoId)}
+        />
       </div>
 
-      <div className="flex justify-center items-center my-8 w-full">
-        <Line options={options} data={data} />
-      </div>
+      {data ? (
+        <div className="flex justify-center items-center my-8 w-full">
+          <Line options={options} data={data} />
+        </div>
+      ) : (
+        <div className="flex justify-center">
+          <Spinner color="indigo" className="h-20 w-20" />
+        </div>
+      )}
     </div>
   );
 };

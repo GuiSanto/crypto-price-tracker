@@ -1,6 +1,6 @@
 import { COINGECKO } from "../constants";
 
-const fetchAllCryptoList = async () => {
+const fetchAllCryptosList = async () => {
     const response = await fetch(COINGECKO.LIST_URL(), {
         method: 'GET',
         headers: {
@@ -14,4 +14,4 @@ const fetchAllCryptoList = async () => {
     return data;
 }
 
-export default fetchAllCryptoList;
+export default fetchAllCryptosList;

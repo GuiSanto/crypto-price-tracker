@@ -4,7 +4,9 @@
 
 Crypto Price Tracker is a simple web application built with TypeScript and React.js that allows users to track cryptocurrency prices. Users can select and deselect cryptocurrencies to monitor their prices in real-time.
 
-![Crypto Price Tracker Screenshot](./public/AppScreenshot1.png)
+![Crypto Price Tracker Screenshot1](./public/AppScreenshot1.png)
+
+![Crypto Price Tracker Screenshot2](./public/AppScreenshot2.png)
 
 ## Features
 

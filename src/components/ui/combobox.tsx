@@ -122,7 +122,7 @@ export function Combobox(props: ComboBoxProps) {
         >
           {value
             ? items.find((item) => item.value === value)?.label
-            : 'Select an item...'}
+            : 'Select a cryptocurrency'}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>

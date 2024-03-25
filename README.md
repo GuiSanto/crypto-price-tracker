@@ -45,7 +45,7 @@ You also need to create a Demo API account in CoinGecko API.
 3. **Use the API key in the .env file:**
    Copy `.env.example` into `.env`, then add your CoinGecko API key to the `.env` file within the `API_KEY_COINGECKO` env variable.
 
-4. For the purpose of this coding challenge, in case you don't want to create a CoinGecko Demo account, here is my API key for you to test the application: `CG-ShorVJ3FsYmnQqNJaACSyDBY`. **Note:** I know API keys should never be shared, I'm just doing it for your convenience in case you don't want to create an account
+4. **Note:** For the purpose of this coding challenge, in case you don't want to create a CoinGecko Demo account, here is my API key for you to test the application: `CG-ShorVJ3FsYmnQqNJaACSyDBY`. I know API keys should never be shared, I'm just doing it for your convenience in case you don't want to create an account
 
 ### Installation
 

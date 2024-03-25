@@ -9,7 +9,7 @@ const SearchCrypto = ({ searchInput, setSearchInput }: SearchCryptoProps) => {
   };
 
   return (
-    <div className="flex flex-col w-1/3 my-8">
+    <div className="flex flex-grow flex-col w-1/3 my-8">
       <input
         type="text"
         className="rounded-md h-10 p-4 bg-gray-700"

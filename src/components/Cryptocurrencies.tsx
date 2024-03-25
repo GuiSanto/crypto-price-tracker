@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import TrackedCryptos, { TrackedCryptosProps } from './TrackedCryptos';
 import { CRYPTOCURRENCIES, localStorageCryptoListKey } from '../constants';
 import PriceHistoryChart from './PriceHistoryChart';
-import { ComboBoxProps, Combobox } from '@/components/ui/combobox';
+import { ComboBoxProps } from '@/components/ui/combobox';
 import useCryptos from '@/hooks/useCryptos';
-import useAllCryptosList from '@/hooks/useAllCryptosList';
 
 const Cryptocurrencies = () => {
   // get tracked cryptos from localStorage. If not, start with 5 by default
@@ -26,7 +25,6 @@ const Cryptocurrencies = () => {
   // fetch the list of all supported coins by CoinGecko
   // NOTE: The CoinGecko API can only fetch ALL cryptos, it doesn't have an endpoint with the option to filter them in the request,
   // so the only way is to get them all
-  const { data: cryptoList } = useAllCryptosList();
 
   const handleRemoveCryptoById: TrackedCryptosProps['removeCryptoById'] = (
     cryptoId,
@@ -59,21 +57,11 @@ const Cryptocurrencies = () => {
 
   return (
     <div className="flex flex-col mt-20 px-40">
-      <div className="flex items-center gap-4">
-        <label className="text-lg font-bold">Add Crypto</label>
-        <Combobox
-          items={
-            cryptoList?.map(({ id, name }) => ({ label: name, value: id })) ??
-            []
-          }
-          itemSelected={addCryptoToTrack}
-        />
-      </div>
-
       <TrackedCryptos
         isLoading={isLoading}
         isError={isError}
         trackedCryptosList={data}
+        addCryptoById={addCryptoToTrack}
         removeCryptoById={handleRemoveCryptoById}
       />
 

@@ -1,4 +1,6 @@
-export type ChartData = {
-    x: number;
-    y: string;
-}[] | undefined
+export type CryptoChartData =
+  | {
+      x: number;
+      y: string;
+    }[]
+  | undefined;

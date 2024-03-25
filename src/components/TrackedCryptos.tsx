@@ -3,17 +3,21 @@ import { Crypto } from '../types/Crypto';
 import { Spinner } from '@material-tailwind/react';
 import SearchCrypto from './SearchCrypto';
 import { filterCryptosByName } from '@/lib/filterCryptosByName';
+import { Combobox } from '@/components/ui/combobox';
+import CryptoComboBox from './CryptoComboBox';
 
 export type TrackedCryptosProps = {
   isLoading: boolean;
   isError: boolean;
   trackedCryptosList?: Crypto[];
+  addCryptoById: (cryptoId: string) => void;
   removeCryptoById: (cryptoId: string) => void;
 };
 
 const TrackedCryptos = ({
   isLoading,
   isError,
+  addCryptoById,
   trackedCryptosList,
   removeCryptoById,
 }: TrackedCryptosProps) => {
@@ -48,7 +52,13 @@ const TrackedCryptos = ({
         Tracked Cryptocurrencies
       </h1>
 
-      <SearchCrypto searchInput={searchInput} setSearchInput={setSearchInput} />
+      <div className="flex gap-4">
+        <SearchCrypto
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+        />
+        <CryptoComboBox addCryptoById={addCryptoById} />
+      </div>
 
       {data &&
         data.map((crypto) => (

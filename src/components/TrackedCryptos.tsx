@@ -3,7 +3,6 @@ import { Crypto } from '../types/Crypto';
 import { Spinner } from '@material-tailwind/react';
 import SearchCrypto from './SearchCrypto';
 import { filterCryptosByName } from '@/lib/filterCryptosByName';
-import { Combobox } from '@/components/ui/combobox';
 import CryptoComboBox from './CryptoComboBox';
 
 export type TrackedCryptosProps = {
